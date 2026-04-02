@@ -55,6 +55,11 @@ if [[ "$user_input" == "yes" ]]; then
 	echo "Installing missing libs"
 	cmake --install build
 
+	echo "Adding location to PATH variable"
+	if grep "export PATH=:$clang_path:"'$PATH' "$HOME/.zshrc"; then
+		echo "export PATH=:$clang_path:"'$PATH' >> "$HOME/.zshrc"
+	fi
+
 else
     echo "Exiting."
     exit 1
